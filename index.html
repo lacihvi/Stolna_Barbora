@@ -1,18 +1,18 @@
 
 <!DOCTYPE html>
+
 <html>
 <head>
 <meta charset="utf-8">
 
-<meta property="og:title" content="Štôlňa Barbora" />
+<meta property="og:title" content="Virtuálna prehliadka" />
 <meta property="og:type" content="website" />
-<meta property="og:image" content="https://lacihvi.github.io/Stolna_Barbora/ico.png" />
-<meta property="og:image:secure_url" content="https://lacihvi.github.io/Stolna_Barbora/ico.png" />
-<meta property="og:description" content="Virtuálna prehliadka Banskej štôlne Barbora" />
+<meta property="og:image" content="https://lacihvi.github.io/Stolna_Barbora/intro.jpg" />
+<meta property="og:description" content="Kliknite a vstúpte do virtuálnej prehliadky" />
 <meta property="og:url" content="https://lacihvi.github.io/Stolna_Barbora/" />
 <meta name="twitter:card" content="summary_large_image">
 
-<title>Štôlna Barbora</title>
+<title>Virtuálna prehliadka</title>
 
 <style>
 body {
@@ -23,15 +23,13 @@ body {
     color: white;
 }
 
-/* BACKGROUND IMAGE FULLSCREEN */
+/* BACKGROUND */
 .bg {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: url('https://lacihvi.github.io/Stolna_Barbora/ico.png') center/cover no-repeat;
-    filter: blur(8px) brightness(0.6);
-    transform: scale(1.1);
-    animation: zoomIn 6s ease forwards, sharpen 3s ease forwards;
+    background: url('https://lacihvi.github.io/Stolna_Barbora/intro.jpg') center/cover no-repeat;
+    filter: brightness(0.6);
 }
 
 /* OVERLAY */
@@ -39,7 +37,7 @@ body {
     position: absolute;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle, transparent 40%, rgba(0,0,0,0.7));
+    background: radial-gradient(circle, transparent 40%, rgba(0,0,0,0.8));
 }
 
 /* CONTENT */
@@ -52,17 +50,34 @@ body {
     justify-content: center;
     flex-direction: column;
     text-align: center;
-    animation: fadeIn 2s ease;
 }
 
+/* TITLE */
 h1 {
     font-size: 32px;
-    letter-spacing: 2px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
-.subtitle {
-    font-size: 14px;
+/* BUTTON */
+.button {
+    padding: 15px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 30px;
+    background: white;
+    color: black;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.button:hover {
+    background: #ddd;
+}
+
+/* SMALL TEXT */
+.note {
+    margin-top: 10px;
+    font-size: 12px;
     opacity: 0.7;
 }
 
@@ -71,36 +86,22 @@ h1 {
     animation: fadeOut 1s ease forwards;
 }
 
-/* ANIMATIONS */
-@keyframes zoomIn {
-    from { transform: scale(1.1); }
-    to { transform: scale(1.3); }
-}
-
-@keyframes sharpen {
-    from { filter: blur(8px) brightness(0.6); }
-    to { filter: blur(0px) brightness(1); }
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
 @keyframes fadeOut {
     to { opacity: 0; }
 }
 </style>
 
 <script>
-setTimeout(function() {
+function enterTour() {
     document.body.classList.add("fade-out");
 
     setTimeout(function() {
         window.location.href = "https://lacihvi.42web.io/Pano/Barbora/tour.html";
     }, 1000);
+}
 
-}, 3500);
+/* AUTO START after 4 seconds */
+setTimeout(enterTour, 4000);
 </script>
 
 </head>
@@ -111,9 +112,11 @@ setTimeout(function() {
 <div class="overlay"></div>
 
 <div class="content">
-    <h1>Banská štôlňa Barbora</h1>
-    <div class="subtitle">Virtuálna prehliadka</div>
+    <h1>Virtuálna prehliadka</h1>
+    <button class="button" onclick="enterTour()">Vstúpiť do prehliadky</button>
+    <div class="note">(alebo počkajte, otvorí sa automaticky)</div>
 </div>
 
 </body>
 </html>
+
