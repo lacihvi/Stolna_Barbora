@@ -48,10 +48,11 @@ body {
     z-index: 2;
     height: 100vh;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
     flex-direction: column;
     text-align: center;
+    padding-bottom: 80px;
 }
 
 /* TITLE */
@@ -114,9 +115,8 @@ setTimeout(enterTour, 4000);
 <div class="overlay"></div>
 
 <div class="content">
-    <h1>Virtuálna prehliadka</h1>
     <button class="button" onclick="enterTour()">Vstúpiť do prehliadky</button>
-    <div class="note">(alebo počkajte, otvorí sa automaticky)</div>
+    <div class="note">automatické otvorenie o pár sekúnd…</div>
 </div>
 
 </body>
