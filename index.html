@@ -1,93 +1,139 @@
 <!DOCTYPE html>
 <html lang="sk">
 <head>
-    <meta charset="utf-8">
-    <!-- Tento riadok opraví zobrazovanie na mobiloch -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Virtuálna prehliadka</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            background: black;
-            font-family: Arial, sans-serif;
-            overflow: hidden;
-        }
+<!-- META TAGY PRE SOCIÁLNE SIETE -->
+<meta property="og:title" content="Virtuálna prehliadka" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://lacihvi.github.io" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:description" content="Kliknite a vstúpte do virtuálnej prehliadky" />
+<meta property="og:url" content="https://lacihvi.github.io" />
+<meta name="twitter:card" content="summary_large_image">
 
-        /* POZADIE - Zobrazí celý obrázok */
-        .bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://lacihvi.github.io') center center no-repeat;
-            background-size: contain; /* Zobrazí vždy CELÝ obrázok */
-        }
+<title>Virtuálna prehliadka</title>
 
-        /* OBSAH - Tlačidlo */
-        .content {
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: 15%; /* Pozícia v percentách funguje najlepšie na všetkých displejoch */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            z-index: 10;
-        }
+<style>
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    background: black;
+    color: white;
+}
 
-        /* DIZAJN TLAČIDLA */
-        .button {
-            padding: 16px 32px;
-            font-size: 18px;
-            font-weight: bold;
-            color: white;
-            background: rgba(255, 255, 255, 0.15);
-            border: 2px solid white;
-            border-radius: 50px;
-            cursor: pointer;
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            transition: 0.3s;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-        }
+/* BACKGROUND - Nastavené na contain, aby si videl celý obrázok */
+.bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url('https://lacihvi.github.iointro.png') center/contain no-repeat;
+    background-color: black;
+}
 
-        .button:hover {
-            background: white;
-            color: black;
-        }
+/* OVERLAY */
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.3);
+}
 
-        .note {
-            color: white;
-            margin-top: 12px;
-            font-size: 12px;
-            text-shadow: 1px 1px 2px black;
-            opacity: 0.8;
-        }
+/* CONTENT - Upravené tak, aby tlačidlo nezmizlo pod lištou prehliadača */
+.content {
+    position: absolute;
+    z-index: 5;
+    width: 100%;
+    bottom: 120px; /* POSUNUTÉ VYŠŠIE (pôvodne bolo 80px / 40px) */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
 
-        /* ANIMÁCIA MIZNUTIA */
-        .fade-out { animation: fadeOut 0.8s forwards; }
-        @keyframes fadeOut { to { opacity: 0; } }
-    </style>
+/* MODERNÉ TLAČIDLO */
+.button {
+    padding: 18px 45px;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    border-radius: 50px;
+    background: rgba(255, 255, 255, 0.1); 
+    color: white;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
 
-    <script>
-        function enterTour() {
-            document.body.classList.add("fade-out");
-            setTimeout(function() {
-                window.location.href = "https://lacihvi.42web.io";
-            }, 800);
-        }
-        setTimeout(enterTour, 5000);
-    </script>
+.button:hover {
+    background: white;
+    color: black;
+    transform: translateY(-5px);
+}
+
+/* SVETELNÝ ZÁBLESK */
+.button::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -60%;
+    width: 20%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.4);
+    transform: rotate(30deg);
+    animation: shine 4s infinite;
+}
+
+@keyframes shine {
+    0% { left: -60%; }
+    20% { left: 120%; }
+    100% { left: 120%; }
+}
+
+.note {
+    margin-top: 15px;
+    font-size: 12px;
+    opacity: 0.7;
+    text-shadow: 1px 1px 2px black;
+}
+
+.fade-out {
+    animation: fadeOut 1s ease forwards;
+}
+
+@keyframes fadeOut {
+    to { opacity: 0; }
+}
+</style>
+
+<script>
+function enterTour() {
+    document.body.classList.add("fade-out");
+    setTimeout(function() {
+        window.location.href = "https://lacihvi.42web.io";
+    }, 1000);
+}
+/* AUTO START po 4 sekundách */
+setTimeout(enterTour, 4000);
+</script>
+
 </head>
+
 <body>
     <div class="bg"></div>
+    <div class="overlay"></div>
     <div class="content">
         <button class="button" onclick="enterTour()">Vstúpiť do prehliadky</button>
         <div class="note">automatické otvorenie o pár sekúnd…</div>
