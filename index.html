@@ -63,21 +63,53 @@ h1 {
     margin-bottom: 20px;
 }
 
-/* BUTTON */
+/* MODERNÉ TLAČIDLO */
 .button {
-    padding: 15px 30px;
+    padding: 18px 45px;
     font-size: 18px;
-    border: none;
-    border-radius: 30px;
-    background: white;
-    color: black;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    border-radius: 50px;
+    background: rgba(255, 255, 255, 0.1); /* Sklenený efekt */
+    color: white;
     cursor: pointer;
-    transition: 0.3s;
+    backdrop-filter: blur(10px); /* Rozmazanie pozadia pod tlačidlom */
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
+/* EFEKT PRI PRECHODE MYŠOU */
 .button:hover {
-    background: #ddd;
+    background: white;
+    color: black;
+    transform: translateY(-5px); /* Jemné nadvihnutie */
+    box-shadow: 0 15px 40px rgba(255, 255, 255, 0.2);
 }
+
+/* SVETELNÝ ZÁBLESK (Animácia) */
+.button::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -60%;
+    width: 20%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.4);
+    transform: rotate(30deg);
+    transition: all 0.6s ease;
+    animation: shine 4s infinite;
+}
+
+@keyframes shine {
+    0% { left: -60%; }
+    20% { left: 120%; }
+    100% { left: 120%; }
+}
+
 
 /* SMALL TEXT */
 .note {
