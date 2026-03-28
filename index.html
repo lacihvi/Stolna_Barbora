@@ -44,16 +44,18 @@ body {
 
 /* CONTENT */
 .content {
-    position: relative;
+    position: absolute; /* Zmena z relative na absolute */
     z-index: 2;
-    height: 100vh;
+    width: 100%;
+    bottom: 120px;      /* Toto presne určuje výšku od spodku (uprav si podľa potreby) */
     display: flex;
-    align-items: center;       /* DÔLEŽITÉ */
-    justify-content: flex-end; /* dole */
     flex-direction: column;
+    align-items: center;
     text-align: center;
-    padding-bottom: 80px;
 }
+
+
+
 
 /* TITLE */
 h1 {
